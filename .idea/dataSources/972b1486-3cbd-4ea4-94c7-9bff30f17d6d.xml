@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="ORACLE" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="KISELEV">
+      <ObjectId>48</ObjectId>
+      <IntrospectionTimestamp>2017-09-20.00:28:05</IntrospectionTimestamp>
+      <CreatedTimestamp>2017-09-19.23:55:35</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:37</ModifiedTimestamp>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="PUBLIC">
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="4" parent="1" name="SYS">
+      <ObjectId>0</ObjectId>
+    </schema>
+    <schema id="5" parent="1" name="SYSTEM">
+      <ObjectId>5</ObjectId>
+    </schema>
+    <schema id="6" parent="1" name="OUTLN">
+      <ObjectId>9</ObjectId>
+    </schema>
+    <schema id="7" parent="1" name="DIP">
+      <ObjectId>14</ObjectId>
+    </schema>
+    <schema id="8" parent="1" name="ORACLE_OCM">
+      <ObjectId>21</ObjectId>
+    </schema>
+    <schema id="9" parent="1" name="DBSNMP">
+      <ObjectId>29</ObjectId>
+    </schema>
+    <schema id="10" parent="1" name="APPQOSSYS">
+      <ObjectId>30</ObjectId>
+    </schema>
+    <schema id="11" parent="1" name="CTXSYS">
+      <ObjectId>32</ObjectId>
+    </schema>
+    <schema id="12" parent="1" name="XDB">
+      <ObjectId>34</ObjectId>
+    </schema>
+    <schema id="13" parent="1" name="ANONYMOUS">
+      <ObjectId>35</ObjectId>
+    </schema>
+    <schema id="14" parent="1" name="MDSYS">
+      <ObjectId>42</ObjectId>
+    </schema>
+    <schema id="15" parent="1" name="HR">
+      <ObjectId>43</ObjectId>
+    </schema>
+    <schema id="16" parent="1" name="FLOWS_FILES">
+      <ObjectId>44</ObjectId>
+    </schema>
+    <schema id="17" parent="1" name="APEX_PUBLIC_USER">
+      <ObjectId>45</ObjectId>
+    </schema>
+    <schema id="18" parent="1" name="APEX_040000">
+      <ObjectId>47</ObjectId>
+    </schema>
+    <schema id="19" parent="1" name="XS$NULL">
+      <ObjectId>2147483638</ObjectId>
+    </schema>
+    <sequence id="20" parent="2" name="ACPLAN_SEQ">
+      <ObjectId>20168</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="21" parent="2" name="MARK_SEQ">
+      <ObjectId>20169</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="22" parent="2" name="SPEC_SEQ">
+      <ObjectId>20170</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="23" parent="2" name="STUD_SEQ">
+      <ObjectId>20167</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="24" parent="2" name="ACADEMIC_PLANS">
+      <ObjectId>20158</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:35</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="25" parent="2" name="MARKS">
+      <ObjectId>20160</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:37</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="26" parent="2" name="SPECIALITIES">
+      <ObjectId>20162</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:37</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="27" parent="2" name="STUDENTS">
+      <ObjectId>20164</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:37</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <column id="28" parent="24" name="PLANID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="24" name="SPEC_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="24" name="SEMESTER">
+      <Position>3</Position>
+      <DataType>NUMBER(2)|0</DataType>
+    </column>
+    <column id="31" parent="24" name="SUBJECT">
+      <Position>4</Position>
+      <DataType>VARCHAR2(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="24" name="REPORT_TYPE">
+      <Position>5</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="33" parent="24" name="PK_ACADEMIC_PLANS">
+      <ObjectId>20159</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:35</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:35</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>PLANID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="34" parent="24" name="PK_ACADEMIC_PLANS">
+      <ModifiedTimestamp>2017-09-19.23:55:35</ModifiedTimestamp>
+      <ColNames>PLANID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>PK_ACADEMIC_PLANS</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <trigger id="35" parent="24" name="APAN_INSERT">
+      <ObjectId>20171</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <Events>I</Events>
+      <Turn>before-row</Turn>
+    </trigger>
+    <column id="36" parent="25" name="MARK_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="25" name="STUDENT_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="25" name="PLANID">
+      <Position>3</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="25" name="MARK_DATE">
+      <Position>4</Position>
+      <DataType>DATE|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="25" name="M_MARK">
+      <Position>5</Position>
+      <DataType>NUMBER(1)|0</DataType>
+    </column>
+    <index id="41" parent="25" name="PK_MARKS">
+      <ObjectId>20161</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>MARK_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="42" parent="25" name="PK_MARKS">
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <ColNames>MARK_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>PK_MARKS</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="43" parent="25" name="FK_STUDENTS_MARKS">
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <ColNames>STUDENT_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <RefTableName>STUDENTS</RefTableName>
+      <RefKeyName>PK_STUDENTS</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="44" parent="25" name="FK_ACADEMIC_PLANS_MARKS">
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <ColNames>PLANID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <RefTableName>ACADEMIC_PLANS</RefTableName>
+      <RefKeyName>PK_ACADEMIC_PLANS</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <trigger id="45" parent="25" name="MARKS_INSERT">
+      <ObjectId>20173</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:37</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:37</ModifiedTimestamp>
+      <Events>I</Events>
+      <Turn>before-row</Turn>
+    </trigger>
+    <column id="46" parent="26" name="SPEC_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="26" name="SPEC_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="48" parent="26" name="PK_SPECIALITIES">
+      <ObjectId>20163</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>SPEC_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="49" parent="26" name="UC_SPECIALITIES_SPEC_NAME">
+      <ObjectId>20166</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>SPEC_NAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="50" parent="26" name="PK_SPECIALITIES">
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <ColNames>SPEC_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>PK_SPECIALITIES</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="51" parent="26" name="UC_SPECIALITIES_SPEC_NAME">
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <ColNames>SPEC_NAME</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>UC_SPECIALITIES_SPEC_NAME</UnderlyingIndexName>
+    </key>
+    <trigger id="52" parent="26" name="SPEC_INSERT">
+      <ObjectId>20174</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:37</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:37</ModifiedTimestamp>
+      <Events>I</Events>
+      <Turn>before-row</Turn>
+    </trigger>
+    <column id="53" parent="27" name="STUD_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="27" name="FIRST_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="27" name="LAST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(55)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="27" name="MIDDLE_NAME">
+      <Position>4</Position>
+      <DataType>VARCHAR2(55)|0</DataType>
+    </column>
+    <column id="57" parent="27" name="SPEC_ID">
+      <Position>5</Position>
+      <DataType>NUMBER(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="27" name="ENTRANCE_DATE">
+      <Position>6</Position>
+      <DataType>DATE|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="59" parent="27" name="PK_STUDENTS">
+      <ObjectId>20165</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:36</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>STUD_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="27" name="PK_STUDENTS">
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <ColNames>STUD_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>PK_STUDENTS</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="27" name="FK_STUDENTS_SPECIALITIES">
+      <ModifiedTimestamp>2017-09-19.23:55:36</ModifiedTimestamp>
+      <ColNames>SPEC_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <RefTableName>SPECIALITIES</RefTableName>
+      <RefKeyName>PK_SPECIALITIES</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <trigger id="62" parent="27" name="STUD_INSERT">
+      <ObjectId>20172</ObjectId>
+      <CreatedTimestamp>2017-09-19.23:55:37</CreatedTimestamp>
+      <ModifiedTimestamp>2017-09-19.23:55:37</ModifiedTimestamp>
+      <Events>I</Events>
+      <Turn>before-row</Turn>
+    </trigger>
+  </database-model>
+</dataSource>
