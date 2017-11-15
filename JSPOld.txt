@@ -1,0 +1,167 @@
+<%@ page language="java" contentType="text/html; charset=utf8"
+         pageEncoding="utf8" %>
+
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<html>
+
+<head>
+    <title>Авторизация</title>
+
+    <link rel="stylesheet" type="text/css" href=" https://cdn.datatables.net/1.10.16/css/dataTables.semanticui.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.semanticui.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/Datatables/editor.semanticui.css">
+
+    <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/semantic.min.css">
+
+
+
+
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.semanticui.min.js"></script>
+    <script src="/resources/Datatables/editor.semanticui.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.semanticui.min.js"></script>
+    <script src="cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+
+
+    <style>
+        .selected {
+            background-color: #7E8F7C;
+        }
+        body{
+            background-color: #f4e7d7;
+        }
+        .menublack{
+            color: whitesmoke !important;;
+            background-color: #3B3738 !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="ui fixed large menu menublack">
+    <div class="ui container">
+        <a href="#" class="header item menublack">
+            <i class="Database icon"></i>
+            Работа с БД
+        </a>
+        <a href="/login" class="item menublack">Сменить БД</a>
+        <div class="ui simple dropdown item menublack">
+            Выбор таблицы <i class="dropdown icon"></i>
+            <div class="menu menublack">
+                <c:forEach items="${tables}" var="table">
+                    <a class="item menublack" href="#" style="color: whitesmoke !important;">${table.name}</a>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui main text container" style="margin-top: 112px">
+    <h1 class="ui header" style="text-align: center;">
+        <i class="left table icon"></i>Tablename
+    </h1>
+</div>>
+<div class="ui main text container" style="padding-bottom: 3rem;">
+    <div class="ui segment" style="border: 6px solid #7E8F7C;">
+        <div class="ui three item menu">
+            <a class="teal item ">
+                <i class="left add circle icon"></i>
+                Добавить
+            </a>
+            <a class="orange item">
+                <i class="left edit icon"></i>
+                Изменить
+            </a>
+            <a class="red item">
+                <i class="left minus circle icon"></i>
+                Удалить
+            </a>
+        </div>
+        <table id="dTable" class="ui celled table" width="100%" cellspacing="0" style="cursor: pointer;">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr id="row_5" role="row" class="odd">
+                    <td class="sorting_1">Airi Satou</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>5407</td>
+                    <td>2008-11-28</td>
+                    <td>$1,627,001</td>
+                </tr>
+                <tr id="row_25" role="row" class="even">
+                    <td class="sorting_1">Angelica Ramos</td>
+                    <td>Chief Executive Officer (CEO)</td>
+                    <td>London</td>
+                    <td>5797</td>
+                    <td>2009-10-09</td>
+                    <td>$1,200,000</td>
+                </tr>
+                <tr id="row_3" role="row" class="odd"><td class="sorting_1">Ashton Cox</td><td>Junior Technical Author</td><td>San Francisco</td><td>1562</td><td>2009-01-12</td><td>$86,000</td></tr><tr id="row_19" role="row" class="even"><td class="sorting_1">Bradley Greer</td><td>Software Engineer</td><td>London</td><td>2558</td><td>2012-10-13</td><td>$132,000</td></tr><tr id="row_28" role="row" class="odd"><td class="sorting_1">Brenden Wagner</td><td>Software Engineer</td><td>San Francisco</td><td>1314</td><td>2011-06-07</td><td>$206,850</td></tr><tr id="row_6" role="row" class="even"><td class="sorting_1">Brielle Williamson</td><td>Integration Specialist</td><td>New York</td><td>4804</td><td>2012-12-02</td><td>$372,000</td></tr><tr id="row_43" role="row" class="odd"><td class="sorting_1">Bruno Nash</td><td>Software Engineer</td><td>London</td><td>6222</td><td>2011-05-03</td><td>$163,500</td></tr><tr id="row_23" role="row" class="even"><td class="sorting_1">Caesar Vance</td><td>Pre-Sales Support</td><td>New York</td><td>8330</td><td>2011-12-12</td><td>$106,450</td></tr><tr id="row_51" role="row" class="odd"><td class="sorting_1">Cara Stevens</td><td>Sales Assistant</td><td>New York</td><td>3990</td><td>2011-12-06</td><td>$145,600</td></tr><tr id="row_4" role="row" class="even"><td class="sorting_1">Cedric Kelly</td><td>Senior Javascript Developer</td><td>Edinburgh</td><td>6224</td><td>2012-03-29</td><td>$433,060</td></tr>
+                <tr id="row_13" role="row" class="odd"><td class="sorting_1">Charde Marshall</td><td>Regional Director</td><td>San Francisco</td><td>6741</td><td>2008-10-16</td><td>$470,600</td></tr><tr id="row_9" role="row" class="even"><td class="sorting_1">Colleen Hurst</td><td>Javascript Developer</td><td>San Francisco</td><td>2360</td><td>2009-09-15</td><td>$205,500</td></tr><tr id="row_20" role="row" class="odd"><td class="sorting_1">Dai Rios</td><td>Personnel Lead</td><td>Edinburgh</td><td>2290</td><td>2012-09-26</td><td>$217,500</td></tr><tr id="row_57" role="row" class="even"><td class="sorting_1">Donna Snider</td><td>Customer Support</td><td>New York</td><td>4226</td><td>2011-01-25</td><td>$112,000</td></tr><tr id="row_24" role="row" class="odd"><td class="sorting_1">Doris Wilder</td><td>Sales Assistant</td><td>Sidney</td><td>3023</td><td>2010-09-20</td><td>$85,600</td></tr><tr id="row_46" role="row" class="even"><td class="sorting_1">Finn Camacho</td><td>Support Engineer</td><td>San Francisco</td><td>2927</td><td>2009-07-07</td><td>$87,500</td></tr><tr id="row_29" role="row" class="odd"><td class="sorting_1">Fiona Green</td><td>Chief Operating Officer (COO)</td><td>San Francisco</td><td>2947</td><td>2010-03-11</td><td>$850,000</td></tr><tr id="row_2" role="row" class="even"><td class="sorting_1">Garrett Winters</td><td>Accountant</td><td>Tokyo</td><td>8422</td><td>2011-07-25</td><td>$170,750</td></tr><tr id="row_34" role="row" class="odd"><td class="sorting_1">Gavin Cortez</td><td>Team Leader</td><td>San Francisco</td><td>2860</td><td>2008-10-26</td><td>$235,500</td></tr><tr id="row_26" role="row" class="even"><td class="sorting_1">Gavin Joyce</td><td>Developer</td><td>Edinburgh</td><td>8822</td><td>2010-12-22</td><td>$92,575</td></tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var table = $('#dTable').DataTable( {
+            select: true,
+            language: {
+                "processing": "Подождите...",
+                "search": "Поиск:",
+                "lengthMenu": "Показать _MENU_ записей",
+                "info": "Записи  _START_ - _END_ из _TOTAL_",
+                "infoEmpty": "нет записей",
+                "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                "infoPostFix": "",
+                "loadingRecords": "Загрузка записей...",
+                "zeroRecords": "Записи отсутствуют.",
+                "emptyTable": "В таблице отсутствуют данные",
+                "paginate": {
+                    "first": "Первая",
+                    "previous": "Предыдущая",
+                    "next": "Следующая",
+                    "last": "Последняя"
+                },
+                "aria": {
+                    "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                    "sortDescending": ": активировать для сортировки столбца по убыванию"
+                }
+            }
+        } );
+
+    } );
+</script>
+
+</body>
+</html>
+
