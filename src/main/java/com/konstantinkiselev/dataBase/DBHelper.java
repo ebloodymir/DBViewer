@@ -16,7 +16,7 @@ public class DBHelper {
     // Get all Table names and their field names
     public static ArrayList<DBTable> getTables() throws SQLException {
 
-        ArrayList<DBTable> tables = new ArrayList<>();
+        ArrayList<DBTable> tables = new ArrayList<>(); // git test
         Connection connection = DBConnection.getInstance().getConnection();
 
         Statement tablesStatement = connection.createStatement();
