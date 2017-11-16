@@ -51,6 +51,12 @@
         .tableFooter{
             cursor: default;
         }
+        table.dataTable tbody > tr.selected{
+            background-color: #bdbdbd;
+        }
+        .ui.menu .ui.dropdown .menu>.item:hover{
+            background-color: rgb(0, 0, 0) !important;
+        }
     </style>
 </head>
 
@@ -85,7 +91,7 @@
     <h1 class="ui header" style="text-align: center;">
         <i class="left table icon"></i>${tName}
     </h1>
-</div>>
+</div>
 <div class="ui main text container" style="padding-bottom: 3rem;max-width: 100% !important;display: table;">
     <div class="ui segment" style="border: 6px solid rgb(59, 55, 56);">
         <div class="ui three item menu">
