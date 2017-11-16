@@ -35,8 +35,15 @@
             background-color: #f4e7d7;
         }
         .menublack{
+            color: whitesmoke !important;
+            background-color: rgb(59, 55, 56) !important;
+        }
+        .menuelemblack{
             color: whitesmoke !important;;
-            background-color: #3B3738 !important;
+            background-color: rgb(59, 55, 56) !important;
+        }
+        .menuelemblack:hover{
+            background-color: rgb(0, 0, 0) !important;
         }
         .sorting{
             cursor: default;
@@ -55,21 +62,21 @@
             <i class="Database icon"></i>
             Работа с БД
         </a>
-        <a href="/login" class="item menublack">Сменить БД</a>
-        <div class="ui simple dropdown item menublack">
+        <a href="/login" class="item menuelemblack">Сменить БД</a>
+        <div class="ui simple dropdown item menuelemblack">
             Таблицы <i class="dropdown icon"></i>
             <div class="menu menublack">
                 <c:forEach items="${tables}" var="table">
-                    <a class="item menublack" href="/table_${table.name}" style="color: whitesmoke !important;">${table.name}</a>
+                    <a class="item menuelemblack" href="/table_${table.name}" style="color: whitesmoke !important;">${table.name}</a>
                 </c:forEach>
             </div>
         </div>
-        <div class="ui simple dropdown item menublack">
+        <div class="ui simple dropdown item menuelemblack">
             Отчёты <i class="dropdown icon"></i>
             <div class="menu menublack">
-                <a class="item menublack" href="#" style="color: whitesmoke !important;">Отчёт 1</a>
-                <a class="item menublack" href="#" style="color: whitesmoke !important;">Отчёт 2</a>
-                <a class="item menublack" href="#" style="color: whitesmoke !important;">Отчёт 3</a>
+                <a class="item menuelemblack" href="#" style="color: whitesmoke !important;">Отчёт 1</a>
+                <a class="item menuelemblack" href="#" style="color: whitesmoke !important;">Отчёт 2</a>
+                <a class="item menuelemblack" href="#" style="color: whitesmoke !important;">Отчёт 3</a>
             </div>
         </div>
     </div>
@@ -80,7 +87,7 @@
     </h1>
 </div>>
 <div class="ui main text container" style="padding-bottom: 3rem;max-width: 100% !important;display: table;">
-    <div class="ui segment" style="border: 6px solid #7E8F7C;">
+    <div class="ui segment" style="border: 6px solid rgb(59, 55, 56);">
         <div class="ui three item menu">
             <a class="teal item " id="addButton">
                 <i class="left add circle icon"></i>
@@ -135,10 +142,10 @@
             </form>
         </div>
         <div class="actions">
-            <div class="ui black deny button" style="background-color: #7E8F7C;" onclick="$('#modalWindow').modal('hide');">
+            <div class="ui black deny button" style="background-color: #87918a;" onclick="$('#modalWindow').modal('hide');">
                 Отмена
             </div>
-            <div class="ui positive right button" style="background-color: #C63D0F;" id="addChangeButton">
+            <div class="ui positive right button" style="background-color: #d4461e;" id="addChangeButton">
                 <div id ="modalAddChangeLabel">
                     Добавить
                 </div>
@@ -154,10 +161,10 @@
             Удалить 7 элементов?
         </div>
         <div class="actions">
-            <div class="ui black deny button" style="background-color: #7E8F7C;" onclick="$('#modalDelete').modal('hide');">
+            <div class="ui black deny button" style="background-color: #87918a;" onclick="$('#modalDelete').modal('hide');">
                 Нет
             </div>
-            <div class="ui positive right button" style="background-color: #C63D0F;">
+            <div class="ui positive right button" style="background-color: #d4461e;">
                 <div id ="modalDeleteOK">
                     Да
                 </div>
@@ -174,7 +181,7 @@
             Ой ой ой
         </div>
         <div class="actions">
-            <div class="ui positive right button" style="background-color: #C63D0F;">
+            <div class="ui positive right button" style="background-color: #d4461e;">
                 <div id ="modalErrorOK">
                     OK
                 </div>
