@@ -11,7 +11,8 @@
     <title>Таблица ${tName}</title>
 
     <link rel="stylesheet" type="text/css" href=" https://cdn.datatables.net/1.10.16/css/dataTables.semanticui.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Datatables/editor.semanticui.css">
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/Semantic-UI-Alert.css">
@@ -34,30 +35,38 @@
         .selected {
             background-color: #7E8F7C;
         }
-        body{
+
+        body {
             background-color: #f4e7d7;
         }
-        .menublack{
+
+        .menublack {
             color: whitesmoke !important;
             background-color: rgb(59, 55, 56) !important;
         }
-        .menuelemblack{
+
+        .menuelemblack {
             color: whitesmoke !important;;
             background-color: rgb(59, 55, 56) !important;
         }
-        .menuelemblack:hover{
+
+        .menuelemblack:hover {
             background-color: rgb(0, 0, 0) !important;
         }
-        .sorting{
+
+        .sorting {
             cursor: default;
         }
-        .tableFooter{
+
+        .tableFooter {
             cursor: default;
         }
-        table.dataTable tbody > tr.selected{
+
+        table.dataTable tbody > tr.selected {
             background-color: #bdbdbd;
         }
-        .ui.menu .ui.dropdown .menu>.item:hover{
+
+        .ui.menu .ui.dropdown .menu > .item:hover {
             background-color: rgb(0, 0, 0) !important;
         }
     </style>
@@ -76,7 +85,8 @@
             Таблицы <i class="dropdown icon"></i>
             <div class="menu menublack">
                 <c:forEach items="${tables}" var="table">
-                    <a class="item menuelemblack" href="/table_${table.name}" style="color: whitesmoke !important;">${table.name}</a>
+                    <a class="item menuelemblack" href="/table_${table.name}"
+                       style="color: whitesmoke !important;">${table.name}</a>
                 </c:forEach>
             </div>
         </div>
@@ -120,11 +130,11 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${records}" var="record"  varStatus="theCount">
+            <c:forEach items="${records}" var="record" varStatus="theCount">
                 <tr id="row_${theCount.index}" role="row">
-                <c:forEach items="${record}" var="field">
-                    <td>${field}</td>
-                </c:forEach>
+                    <c:forEach items="${record}" var="field">
+                        <td>${field}</td>
+                    </c:forEach>
                 </tr>
             </c:forEach>
             </tbody>
@@ -151,11 +161,12 @@
             </form>
         </div>
         <div class="actions">
-            <div class="ui black deny button" style="background-color: #87918a;" onclick="$('#modalWindow').modal('hide');">
+            <div class="ui black deny button" style="background-color: #87918a;"
+                 onclick="$('#modalWindow').modal('hide');">
                 Отмена
             </div>
             <div class="ui positive right button" style="background-color: #d4461e;" id="addChangeButton">
-                <div id ="modalAddChangeLabel">
+                <div id="modalAddChangeLabel">
                     Добавить
                 </div>
             </div>
@@ -170,11 +181,12 @@
             Удалить 7 элементов?
         </div>
         <div class="actions">
-            <div class="ui black deny button" style="background-color: #87918a;" onclick="$('#modalDelete').modal('hide');">
+            <div class="ui black deny button" style="background-color: #87918a;"
+                 onclick="$('#modalDelete').modal('hide');">
                 Нет
             </div>
             <div class="ui positive right button" style="background-color: #d4461e;">
-                <div id ="modalDeleteOK">
+                <div id="modalDeleteOK">
                     Да
                 </div>
             </div>
@@ -183,12 +195,12 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        var table = $('#dTable').DataTable( {
+    $(document).ready(function () {
+        var table = $('#dTable').DataTable({
             select: true,
             columns: [
                 <c:forEach items="${fields}" var="field">
-                    { name: '${field.name}' },
+                {name: '${field.name}'},
                 </c:forEach>
             ],
             language: {
@@ -217,30 +229,30 @@
                 }
             }
 
-        } );
+        });
         table
-            .on( 'select', function ( e, dt, type, indexes ) {
-                var count = table.rows( { selected: true } ).count();
+            .on('select', function (e, dt, type, indexes) {
+                var count = table.rows({selected: true}).count();
                 if (count > 1 || count == 0) {
                     $("#addButton").prop('disabled', true);
                 }
                 else {
                     $("#addButton").prop('disabled', false);
                 }
-            } )
-            .on( 'deselect', function ( e, dt, type, indexes ) {
-                var count = table.rows( { selected: true } ).count();
-                    if (count > 1 || count == 0) {
-                        $("#addButton").prop('disabled', true);
-                    }
-                    else {
-                        $("#addButton").prop('disabled', false);
-                    }
-            } );
+            })
+            .on('deselect', function (e, dt, type, indexes) {
+                var count = table.rows({selected: true}).count();
+                if (count > 1 || count == 0) {
+                    $("#addButton").prop('disabled', true);
+                }
+                else {
+                    $("#addButton").prop('disabled', false);
+                }
+            });
 
         function fillModal() {
             var elements = document.getElementsByClassName('modalInputField');
-            for(var i=0; i<elements.length; i++) {
+            for (var i = 0; i < elements.length; i++) {
                 elements[i].value = "HUEHUEHEUEHUEEHUEHEU";
             }
             $('#modalWindow').modal('show');
@@ -248,14 +260,14 @@
 
         function clearModal() {
             var elements = document.getElementsByClassName('modalInputField');
-            for(var i=0; i<elements.length; i++) {
+            for (var i = 0; i < elements.length; i++) {
                 elements[i].value = "";
             }
         }
 
         // Кнопка добавить
         // ID выдает кривой, нужна перезагрузка страницы
-        $( "#addButton" ).click(function() {
+        $("#addButton").click(function () {
             $("#modalTitle").html("Добавить");
             $("#modalAddChangeLabel").html("Добавить")
             clearModal();
@@ -269,8 +281,8 @@
         });
 
         // Кнопка изменить
-        $( "#changeButton" ).click(function() {
-            var count = table.rows( { selected: true } ).count();
+        $("#changeButton").click(function () {
+            var count = table.rows({selected: true}).count();
             if (count == 1) {
                 $("#modalTitle").html("Изменить");
                 $("#modalAddChangeLabel").html("Изменить")
@@ -291,11 +303,11 @@
         function changeData() {
             var stas = JSON.stringify(getFormData($("form[id=addChangeForm]")));
             $.ajax({
-                url : '/updateRecord${tName}',
+                url: '/updateRecord${tName}',
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    'values' : stas
+                    'values': stas
                 },
                 success: function (data) {
                     if (data.status == "OK") {
@@ -310,7 +322,7 @@
         }
 
         // Кнопка удалить
-        $( "#deleteButton" ).click(function() {
+        $("#deleteButton").click(function () {
             var count = table.rows({selected: true}).count();
             if (count > 0) {
                 $('#modalDelete').modal('show');
@@ -321,25 +333,25 @@
             }
         });
         // Подтвердить удаление
-        $( "#modalDeleteOK" ).click(function() {
+        $("#modalDeleteOK").click(function () {
             $('#modalDelete').modal('hide');
             var rows = table.rows({selected: true}).data();
             var indexList = []; // IDs for delete
-            for (var i = 0; i < rows.length; i++){
+            for (var i = 0; i < rows.length; i++) {
                 indexList.push(rows[i][${pkFieldIndex}]);
             }
             var jsonArray = JSON.stringify(indexList);
             $.ajax({
-                url : '/deleteRecord${tName}',
+                url: '/deleteRecord${tName}',
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    'values' : jsonArray
+                    'values': jsonArray
                 },
                 success: function (data) {
-                    switch(data.status) {
+                    switch (data.status) {
                         case "OK":
-                            table.rows({selected: true}).remove().draw( false );
+                            table.rows({selected: true}).remove().draw(false);
                             showSuccess("Запись удалена!");
                             break;
                         case "ConstraintError":
@@ -354,7 +366,7 @@
         });
 
 
-        $('#addChangeButton').click(function() {
+        $('#addChangeButton').click(function () {
             if ($("#modalTitle").html() == "Добавить")
                 sendData();
             else if ($("#modalTitle").html() == "Изменить")
@@ -363,14 +375,14 @@
         // Склонение существительных после числительных
         function declOfNum(number, titles) {
             cases = [2, 0, 1, 1, 1, 2];
-            return number + ' ' + titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+            return number + ' ' + titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
         }
 
-        function getFormData($form){
+        function getFormData($form) {
             var unindexed_array = $form.serializeArray();
             var indexed_array = {};
 
-            $.map(unindexed_array, function(n, i){
+            $.map(unindexed_array, function (n, i) {
                 indexed_array[n['name']] = n['value'];
             });
 
@@ -388,25 +400,25 @@
         function sendData() {
             var stas = JSON.stringify(getFormData($("form[id=addChangeForm]")));
             $.ajax({
-                url : '/addRecord${tName}',
+                url: '/addRecord${tName}',
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    'values' : stas
+                    'values': stas
                 },
                 success: function (data) {
                     if (data.status == "OK") {
                         var stass = $("form[id=addChangeForm]").serializeArray();
                         var sass = mapToArray(stass);
                         sass[0] = data.id;
-                        table.row.add(sass).draw( false );
+                        table.row.add(sass).draw(false);
                         showSuccess("Запись добавлена!");
                     } else
                         showError("Не удалось добавить запись");
                 }
             });
         }
-    } );
+    });
     function showError(message) {
         $.uiAlert({
             textHead: 'Ошибка', // header

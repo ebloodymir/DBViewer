@@ -5,7 +5,8 @@ import com.konstantinkiselev.entities.DBTable;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Kostya on 20.09.2017.
@@ -48,14 +49,14 @@ public class DBHelper {
         return resultSetToArrayList(tablesResultSet);
     }
 
-    private static List resultSetToArrayList(ResultSet rs) throws SQLException{
+    private static List resultSetToArrayList(ResultSet rs) throws SQLException {
         ResultSetMetaData md = rs.getMetaData();
         Object data;
         int columns = md.getColumnCount();
         ArrayList list = new ArrayList();
-        while (rs.next()){
+        while (rs.next()) {
             ArrayList row = new ArrayList(columns);
-            for(int i=1; i<=columns; ++i){
+            for (int i = 1; i <= columns; ++i) {
                 data = rs.getObject(i);
                 if (data instanceof Timestamp)//Timestamp
                     data = new SimpleDateFormat("dd.MM.YYYY HH:mm").format(data);
@@ -71,19 +72,18 @@ public class DBHelper {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement insertStatement = connection.createStatement();
         String sql = "insert into " + tableName + "(";
-        for (String field : fields){
+        for (String field : fields) {
             sql += field + ", ";
         }
         sql = sql.substring(0, sql.length() - 2);
         sql += ") values(";
-        for (String param : parameters){
+        for (String param : parameters) {
             if (param.matches("\\d{2}.\\d{2}.\\d{4} \\d{2}:\\d{2}")) { // if DATE type
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                 java.util.Date date = dateFormat.parse(param);
                 Timestamp tstamp = new Timestamp(date.getTime());
                 sql += "TIMESTAMP\'" + tstamp + "'',";
-            }
-            else
+            } else
                 sql += "'" + param + "', ";
         }
         sql = sql.substring(0, sql.length() - 2);
@@ -98,7 +98,7 @@ public class DBHelper {
         */
     }
 
-    public static void deleteRecords(String tableName, ArrayList<String> ids) throws SQLException{
+    public static void deleteRecords(String tableName, ArrayList<String> ids) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement pkStatement = connection.createStatement();
         String sql = "delete from " + tableName + " where " + getPrimaryKey(tableName) + " in (";
@@ -115,24 +115,23 @@ public class DBHelper {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement insertStatement = connection.createStatement();
         String sql = "update " + tableName + " set ";
-        for (int i = 0; i < fields.size(); i++){
+        for (int i = 0; i < fields.size(); i++) {
             sql += fields.get(i) + "=";
             if (parameters.get(i).matches("\\d{2}.\\d{2}.\\d{4} \\d{2}:\\d{2}")) { // if DATE type
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                 java.util.Date date = dateFormat.parse(parameters.get(i));
                 Timestamp tstamp = new Timestamp(date.getTime());
                 sql += "TIMESTAMP\'" + tstamp + "'',";
-            }
-            else
+            } else
                 sql += "'" + parameters.get(i) + "', ";
         }
         sql = sql.substring(0, sql.length() - 2);
-        sql += " where " + getPrimaryKey(tableName) + " = " +  getPKValue(pkName,  fields, parameters);
+        sql += " where " + getPrimaryKey(tableName) + " = " + getPKValue(pkName, fields, parameters);
         System.out.println("Update query: " + sql);
         insertStatement.execute(sql);
     }
 
-    private static String getPKValue(String pkName, ArrayList<String> fields, ArrayList<String> parameters){
+    private static String getPKValue(String pkName, ArrayList<String> fields, ArrayList<String> parameters) {
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).equals(pkName))
                 return parameters.get(i);
@@ -144,14 +143,13 @@ public class DBHelper {
         //SELECT cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = 'STUDENTS' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner
         Connection connection = DBConnection.getInstance().getConnection();
         Statement pkStatement = connection.createStatement();
-        String sql = "SELECT cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = \'"+ tableName + "\' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner";
+        String sql = "SELECT cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = \'" + tableName + "\' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner";
         pkStatement.execute(sql);
         ResultSet tablesResultSet = pkStatement.getResultSet();
         tablesResultSet.next();
         try {
             return tablesResultSet.getString(1);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }

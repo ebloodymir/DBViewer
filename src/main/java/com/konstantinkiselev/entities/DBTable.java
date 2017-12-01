@@ -10,11 +10,11 @@ public class DBTable {
     private String name;
     private ArrayList<DBField> fields;
 
-    public DBTable(){
+    public DBTable() {
         this.fields = new ArrayList<>();
     }
 
-    public DBTable(String name){
+    public DBTable(String name) {
         this();
         this.name = name;
     }

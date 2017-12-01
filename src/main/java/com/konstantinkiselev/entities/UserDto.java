@@ -8,7 +8,8 @@ public class UserDto {
     private String username;
     private String password;
 
-    public UserDto() {}
+    public UserDto() {
+    }
 
     public UserDto(String DBLink, String username, String password) {
         this.DBLink = DBLink;

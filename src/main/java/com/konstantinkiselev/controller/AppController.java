@@ -5,11 +5,11 @@ import com.konstantinkiselev.dataBase.DBConnection;
 import com.konstantinkiselev.dataBase.DBHelper;
 import com.konstantinkiselev.entities.DBField;
 import com.konstantinkiselev.entities.DBTable;
-
 import com.konstantinkiselev.entities.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class AppController {
 
         model.addAttribute("tables", tables);
         for (DBTable table : tables)
-            if (table.getName().equals(tName)){
+            if (table.getName().equals(tName)) {
                 this.tableRecords = (ArrayList) DBHelper.getTableData(tName);
                 model.addAttribute("records", this.tableRecords);
                 model.addAttribute("fields", table.getFields());
@@ -68,14 +68,14 @@ public class AppController {
     @RequestMapping(value = "/addRecord{tableName}", method = RequestMethod.POST)
     public @ResponseBody
     String addRecord(@PathVariable("tableName") String tableName,
-                                     @ModelAttribute("values") String values
+                     @ModelAttribute("values") String values
     ) throws ParseException {
 
         HashMap<String, String> selects = new Gson().fromJson(values, HashMap.class);
 
         ArrayList<String> sqlParams = new ArrayList<>();
         ArrayList<String> sqlFields = new ArrayList<>();
-        for(Map.Entry<String, String> entry : selects.entrySet()) {
+        for (Map.Entry<String, String> entry : selects.entrySet()) {
             //String key = entry.getKey();
             //String value = entry.getValue();
 
@@ -88,7 +88,7 @@ public class AppController {
             records.removeAll(this.tableRecords);
             int pkIndex = 0;
             for (DBTable table : tables)
-                if (table.getName().equals(tableName)){
+                if (table.getName().equals(tableName)) {
                     int i = 0;
                     for (DBField field : table.getFields()) {
                         if (field.getName().equals(DBHelper.getPrimaryKey(tableName))) {
@@ -110,8 +110,8 @@ public class AppController {
     @RequestMapping(value = "/deleteRecord{tableName}", method = RequestMethod.POST)
     public @ResponseBody
     String deleteRecord(@PathVariable("tableName") String tableName,
-                                     @ModelAttribute("values") String values
-    )  {
+                        @ModelAttribute("values") String values
+    ) {
 
         ArrayList<String> ids = new Gson().fromJson(values, ArrayList.class);
         try {
@@ -128,19 +128,19 @@ public class AppController {
     @RequestMapping(value = "/updateRecord{tableName}", method = RequestMethod.POST)
     public @ResponseBody
     String updateRecord(@PathVariable("tableName") String tableName,
-                     @ModelAttribute("values") String values
+                        @ModelAttribute("values") String values
     ) throws ParseException {
         String pkName = "";
         HashMap<String, String> selects = new Gson().fromJson(values, HashMap.class);
         ArrayList<String> sqlParams = new ArrayList<>();
         ArrayList<String> sqlFields = new ArrayList<>();
-        for(Map.Entry<String, String> entry : selects.entrySet()) {
+        for (Map.Entry<String, String> entry : selects.entrySet()) {
             sqlParams.add(entry.getValue());
             sqlFields.add(entry.getKey());
         }
         try {
             for (DBTable table : tables)
-                if (table.getName().equals(tableName)){
+                if (table.getName().equals(tableName)) {
                     int i = 0;
                     for (DBField field : table.getFields()) {
                         if (field.getName().equals(DBHelper.getPrimaryKey(tableName)))
@@ -162,7 +162,7 @@ public class AppController {
     private int getPKIndex(String tableName) throws SQLException {
         int pkIndex = 0;
         for (DBTable table : tables)
-            if (table.getName().equals(tableName)){
+            if (table.getName().equals(tableName)) {
                 int i = 0;
                 for (DBField field : table.getFields()) {
                     if (field.getName().equals(DBHelper.getPrimaryKey(tableName))) {

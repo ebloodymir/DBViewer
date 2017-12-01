@@ -1,8 +1,12 @@
 package com.konstantinkiselev.dataBase;
 
-import java.sql.*;
-import java.util.*;
 import oracle.jdbc.driver.OracleDriver;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Locale;
+
 /**
  * Created by Kostya on 20.09.2017.
  */
@@ -22,7 +26,7 @@ public class DBConnection {
     }
 
     public Connection getConnection() {
-            return this.connection;
+        return this.connection;
     }
 
     public Connection setConnection(String url, String username, String password) throws SQLException {

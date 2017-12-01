@@ -9,7 +9,8 @@ public class DBField {
     private String type;
     private String length;
 
-    public DBField() {}
+    public DBField() {
+    }
 
     public DBField(String name, String type, String length) {
         this.name = name;
