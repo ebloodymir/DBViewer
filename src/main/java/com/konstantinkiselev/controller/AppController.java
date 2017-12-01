@@ -30,12 +30,9 @@ public class AppController {
 
     ////////////////////////////////////////////////Login///////////////////////////////////////////////////////////////
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String getLogin(ModelMap model) {
-
-        model.addAttribute("message", "Spring 3 MVC - Hello World");
+    public String getLogin() {
         tableRecords = new ArrayList();
         return "login";
-
     }
 
     @RequestMapping(value = "/login")

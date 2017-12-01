@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Datatables/editor.semanticui.css">
+    <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/Semantic-UI-Alert.css">
 
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/bootswatch/semantic.cosmo.min.css">
@@ -26,6 +27,8 @@
     <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.semanticui.min.js"></script>
     <script src="cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+    <script src="/resources/Semantic-UI/components/Semantic-UI-Alert.js"></script>
+
 
     <style>
         .selected {
@@ -177,23 +180,6 @@
             </div>
         </div>
     </div>
-
-    <!--MODAL ERROR-->
-    <div class="ui mini modal" id="modalError">
-        <div class="header">
-            Ошибка
-        </div>
-        <div class="content" id="modalErrorMessage">
-            Ой ой ой
-        </div>
-        <div class="actions">
-            <div class="ui positive right button" style="background-color: #d4461e;">
-                <div id ="modalErrorOK">
-                    OK
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script type="text/javascript">
@@ -267,15 +253,6 @@
             }
         }
 
-        // Сообщения о ошибке
-        function modalError(errorString) {
-            $('#modalError').modal('show');
-            $("#modalErrorMessage").html(errorString);
-        }
-        $( "#modalErrorOK" ).click(function() {
-            $('#modalError').modal('hide');
-        });
-
         // Кнопка добавить
         // ID выдает кривой, нужна перезагрузка страницы
         $( "#addButton" ).click(function() {
@@ -306,7 +283,7 @@
                 }
                 $('#modalWindow').modal('show');
             } else {
-
+                showWarning("Выберите данные для изменения");
             }
         });
 
@@ -325,8 +302,9 @@
                         var stass = $("form[id=addChangeForm]").serializeArray();
                         var sass = mapToArray(stass);
                         table.row({selected: true}).data(sass);
+                        showSuccess("Запись изменена");
                     } else
-                        alert("Error");
+                        showError("Не удалось изменить запись");
                 }
             });
         }
@@ -339,6 +317,7 @@
                 var qString = "Вы действительно хотите удалить " + declOfNum(count, ['запись?', 'записи?', 'записей?']);
                 $('#modalDeleteQuestionLable').html(qString);
             } else {
+                showWarning("Выберите данные для удаления");
             }
         });
         // Подтвердить удаление
@@ -360,10 +339,14 @@
                 success: function (data) {
                     switch(data.status) {
                         case "OK":
-                            table.rows({selected: true}).remove().draw( false );;
+                            table.rows({selected: true}).remove().draw( false );
+                            showSuccess("Запись удалена!");
                             break;
                         case "ConstraintError":
-                            modalError("Невозможно удалить выбранные записи: нарушение ограничений БД");
+                            showError("Невозможно удалить выбранные записи: нарушение ограничений БД");
+                            break;
+                        default:
+                            showError("Что то пошло не так");
                             break;
                     }
                 }
@@ -378,7 +361,6 @@
                 changeData();
         });
         // Склонение существительных после числительных
-        //declOfNum(5, ['запись', 'записи', 'записей'])
         function declOfNum(number, titles) {
             cases = [2, 0, 1, 1, 1, 2];
             return number + ' ' + titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
@@ -418,12 +400,46 @@
                         var sass = mapToArray(stass);
                         sass[0] = data.id;
                         table.row.add(sass).draw( false );
+                        showSuccess("Запись добавлена!");
                     } else
-                        alert("Error");
+                        showError("Не удалось добавить запись");
                 }
             });
         }
     } );
+    function showError(message) {
+        $.uiAlert({
+            textHead: 'Ошибка', // header
+            text: message, // Text
+            bgcolor: '#b22323', // background-color
+            textcolor: '#fff', // color
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
+            icon: 'remove circle', // icon in semantic-UI
+            time: 3, // time
+        });
+    }
+    function showWarning(message) {
+        $.uiAlert({
+            textHead: 'Предупреждение', // header
+            text: message, // Text
+            bgcolor: '#d5761a', // background-color
+            textcolor: '#fff', // color
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
+            icon: 'warning sign', // icon in semantic-UI
+            time: 3, // time
+        });
+    }
+    function showSuccess(message) {
+        $.uiAlert({
+            textHead: 'Успешно', // header
+            text: message, // Text
+            bgcolor: '#2898c4', // background-color
+            textcolor: '#fff', // color
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
+            icon: 'checkmark box', // icon in semantic-UI
+            time: 3, // time
+        });
+    }
 </script>
 <script src="/resources/Semantic-UI/semantic.js"></script>
 </body>
