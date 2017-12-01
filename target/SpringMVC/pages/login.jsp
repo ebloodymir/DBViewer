@@ -24,6 +24,7 @@
 		<link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/list.css">
 		<link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/message.css">
 		<link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/icon.css">
+		<link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/bootswatch/semantic.cosmo.min.css">
 	    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
 	  			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 	  			crossorigin="anonymous"></script>
@@ -41,7 +42,7 @@
 			<div class="column"></div>
 			<div class="column" style="margin-top: 15rem;">
 				<form class="ui form" action="/login" method="post" name="userDto">
-					<div class="ui teal segment" style="border-top: 2px solid #C63D0F !important;">
+					<div class="ui teal segment" style="border-top: 2px solid rgb(212, 70, 30) !important;">
 						<h2 class="ui center aligned header">Авторизация</h2>
 						<div class="field">
 							<div class="ui left icon input">
@@ -61,7 +62,7 @@
 								<input name="password" placeholder="Пароль" type="password" value="kiselev">
 							</div>
 						</div>
-						<button class="ui fluid large teal submit button" type="submit" style="background-color: #C63D0F;">Вход</button>
+						<button class="ui fluid large teal submit button" type="submit" style="background-color: rgb(212, 70, 30);">Вход</button>
 					</div>
 				</form>
 			</div>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Datatables/editor.semanticui.css">
+    <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/Semantic-UI-Alert.css">
 
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/bootswatch/semantic.cosmo.min.css">
@@ -26,6 +27,8 @@
     <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.semanticui.min.js"></script>
     <script src="cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+    <script src="/resources/Semantic-UI/components/Semantic-UI-Alert.js"></script>
+
 
     <style>
         .selected {
@@ -325,8 +328,9 @@
                         var stass = $("form[id=addChangeForm]").serializeArray();
                         var sass = mapToArray(stass);
                         table.row({selected: true}).data(sass);
+                        showSuccess("Запись изменена");
                     } else
-                        alert("Error");
+                        showError("Не удалось изменить запись");
                 }
             });
         }
@@ -418,12 +422,35 @@
                         var sass = mapToArray(stass);
                         sass[0] = data.id;
                         table.row.add(sass).draw( false );
+                        showSuccess("Запись добавлена!");
                     } else
-                        alert("Error");
+                        showError("Не удалось добавить запись");
                 }
             });
         }
     } );
+    function showError(message) {
+        $.uiAlert({
+            textHead: 'Ошибка', // header
+            text: message, // Text
+            bgcolor: '#b22323', // background-color
+            textcolor: '#fff', // color
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
+            icon: 'remove circle', // icon in semantic-UI
+            time: 3, // time
+        });
+    }
+    function showSuccess(message) {
+        $.uiAlert({
+            textHead: 'Успешно', // header
+            text: message, // Text
+            bgcolor: '#2898c4', // background-color
+            textcolor: '#fff', // color
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
+            icon: 'checkmark box', // icon in semantic-UI
+            time: 3, // time
+        });
+    }
 </script>
 <script src="/resources/Semantic-UI/semantic.js"></script>
 </body>
