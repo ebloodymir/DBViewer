@@ -31,9 +31,6 @@
     <script src="/resources/Semantic-UI/components/Semantic-UI-Alert.js"></script>
 
     <style>
-        .selected {
-            background-color: #7E8F7C;
-        }
 
         body {
             background-color: #f4e7d7;
@@ -41,20 +38,16 @@
 
         .menublack {
             color: whitesmoke !important;
-            background-color: rgb(59, 55, 56) !important;
+            background-color: rgb(51, 51, 51) !important;
         }
 
         .menuelemblack {
             color: whitesmoke !important;;
-            background-color: rgb(59, 55, 56) !important;
+            background-color: rgb(51, 51, 51) !important;
         }
 
         .menuelemblack:hover {
             background-color: rgb(0, 0, 0) !important;
-        }
-
-        .sorting {
-            cursor: default;
         }
 
         .tableFooter {
@@ -62,11 +55,22 @@
         }
 
         table.dataTable tbody > tr.selected {
-            background-color: #bdbdbd;
+            background-color: rgba(51, 51, 51, 0.9);
+            color: white;
         }
 
         .ui.menu .ui.dropdown .menu > .item:hover {
             background-color: rgb(0, 0, 0) !important;
+        }
+
+        .ui.selection.dropdown .menu > .item:hover {
+            background-color: rgb(51, 51, 51);
+        }
+        .ui.input input:focus, .ui.input input:active {
+            border-color: rgb(51, 51, 51);
+        }
+        .ui.form input[type="text"]:focus, .ui.form input[type="text"]:active {
+            border-color: rgb(51, 51, 51);
         }
     </style>
 </head>
@@ -89,16 +93,6 @@
                 </c:forEach>
             </div>
         </div>
-        <!--
-        <div class="ui simple dropdown item menuelemblack">
-            Отчёты <i class="dropdown icon"></i>
-            <div class="menu menublack">
-                <a class="item menuelemblack" href="#" style="color: whitesmoke !important;">Отчёт 1</a>
-                <a class="item menuelemblack" href="#" style="color: whitesmoke !important;">Отчёт 2</a>
-                <a class="item menuelemblack" href="#" style="color: whitesmoke !important;">Отчёт 3</a>
-            </div>
-        </div>
-        -->
     </div>
 </div>
 <div class="ui main text container" style="margin-top: 112px">
@@ -368,7 +362,6 @@
                 }
             });
         });
-
 
         $('#addChangeButton').click(function () {
             if ($("#modalTitle").html() == "Добавить")
