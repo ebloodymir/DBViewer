@@ -68,7 +68,6 @@ public class DBHelper {
     }
 
     public static void addRecord(String tableName, ArrayList<String> parameters, ArrayList<String> fields) throws SQLException, ParseException {
-        //insert into students values (2, 'Linda', 'Ruiz', 'Phillip', 15, to_date('2015-11-22' , 'YYYY-MM-DD'));
         Connection connection = DBConnection.getInstance().getConnection();
         Statement insertStatement = connection.createStatement();
         String sql = "insert into " + tableName + "(";
@@ -90,12 +89,6 @@ public class DBHelper {
         sql += ")";
         System.out.print("Add query: " + sql);
         insertStatement.execute(sql, Statement.RETURN_GENERATED_KEYS);
-        /*
-        ResultSet rs = insertStatement.getGeneratedKeys();
-        if (rs.next()) {
-            int productId = rs.getInt(1);
-        }
-        */
     }
 
     public static void deleteRecords(String tableName, ArrayList<String> ids) throws SQLException {
@@ -108,7 +101,6 @@ public class DBHelper {
         sql += ")";
         System.out.print("Delete query: " + sql);
         pkStatement.execute(sql);
-
     }
 
     public static void updateRecord(String tableName, ArrayList<String> parameters, ArrayList<String> fields, String pkName) throws SQLException, ParseException {
@@ -140,7 +132,6 @@ public class DBHelper {
     }
 
     public static String getPrimaryKey(String tableName) throws SQLException {
-        //SELECT cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = 'STUDENTS' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner
         Connection connection = DBConnection.getInstance().getConnection();
         Statement pkStatement = connection.createStatement();
         String sql = "SELECT cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = \'" + tableName + "\' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner";
@@ -154,15 +145,4 @@ public class DBHelper {
         }
     }
 
-    /*
-    public static void main(String [] args) throws SQLException {
-        String url = "jdbc:oracle:thin:@localhost:1521:XE";
-        String username = "kiselev";
-        String password = "kiselev";
-        Connection con = DBConnection.getInstance().setConnection(url, username, password);
-        //addRecord("Students", "400", "Vasilii", "stepanov", "ivanovi4", "15", "01.09.2010");
-        String s = getPrimaryKey("STUDENTS");
-        s += "a";
-    }
-    */
 }
