@@ -296,6 +296,8 @@
                     elements[j].value = data[j];
                 }
                 $('#modalWindow').modal('show');
+            } else if (count > 1) {
+                showWarning("Нельзя изменить больше одной записи");
             } else {
                 showWarning("Выберите данные для изменения");
             }
