@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf8"
-         pageEncoding="utf8" %>
+<%@ page language="java" contentType="text/html; charset=utf8" pageEncoding="utf8" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
@@ -11,8 +10,7 @@
     <title>Таблица ${tName}</title>
 
     <link rel="stylesheet" type="text/css" href=" https://cdn.datatables.net/1.10.16/css/dataTables.semanticui.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Datatables/editor.semanticui.css">
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/Semantic-UI-Alert.css">
@@ -29,7 +27,6 @@
     <script src="cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
     <script src="/resources/Semantic-UI/components/Semantic-UI-Alert.js"></script>
-
 
     <style>
         .selected {
@@ -90,6 +87,7 @@
                 </c:forEach>
             </div>
         </div>
+        <!--
         <div class="ui simple dropdown item menuelemblack">
             Отчёты <i class="dropdown icon"></i>
             <div class="menu menublack">
@@ -98,6 +96,7 @@
                 <a class="item menuelemblack" href="#" style="color: whitesmoke !important;">Отчёт 3</a>
             </div>
         </div>
+        -->
     </div>
 </div>
 <div class="ui main text container" style="margin-top: 112px">

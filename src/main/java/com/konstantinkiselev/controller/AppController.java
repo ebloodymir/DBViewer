@@ -72,13 +72,9 @@ public class AppController {
     ) throws ParseException {
 
         HashMap<String, String> selects = new Gson().fromJson(values, HashMap.class);
-
         ArrayList<String> sqlParams = new ArrayList<>();
         ArrayList<String> sqlFields = new ArrayList<>();
         for (Map.Entry<String, String> entry : selects.entrySet()) {
-            //String key = entry.getKey();
-            //String value = entry.getValue();
-
             sqlParams.add(entry.getValue());
             sqlFields.add(entry.getKey());
         }
@@ -86,18 +82,7 @@ public class AppController {
             DBHelper.addRecord(tableName, sqlParams, sqlFields);
             ArrayList records = (ArrayList) DBHelper.getTableData(tableName);
             records.removeAll(this.tableRecords);
-            int pkIndex = 0;
-            for (DBTable table : tables)
-                if (table.getName().equals(tableName)) {
-                    int i = 0;
-                    for (DBField field : table.getFields()) {
-                        if (field.getName().equals(DBHelper.getPrimaryKey(tableName))) {
-                            pkIndex = i;
-                            break;
-                        }
-                        i++;
-                    }
-                }
+            int pkIndex = getPKIndex(tableName);
             ArrayList tempList = (ArrayList<String>) records.get(0);
             return "{\"status\":\"OK\", \"id\": \"" + tempList.get(pkIndex) + "\"}";
         } catch (SQLException e) {
@@ -150,8 +135,6 @@ public class AppController {
             DBHelper.updateRecord(tableName, sqlParams, sqlFields, pkName);
             ArrayList records = (ArrayList) DBHelper.getTableData(tableName);
             records.removeAll(this.tableRecords);
-            String json = new Gson().toJson(records);
-            String a = "asdasfag";
         } catch (SQLException e) {
             e.printStackTrace();
             return "{\"status\":\"ERROR\"}";
