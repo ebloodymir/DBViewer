@@ -65,6 +65,7 @@
 
         .ui.selection.dropdown .menu > .item:hover {
             background-color: rgb(51, 51, 51);
+            color: white;
         }
         .ui.input input:focus, .ui.input input:active {
             border-color: rgb(51, 51, 51);
