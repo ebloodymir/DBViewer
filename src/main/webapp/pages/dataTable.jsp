@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Datatables/editor.semanticui.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/components/Semantic-UI-Alert.css">
 
     <link rel="stylesheet" type="text/css" href="/resources/Semantic-UI/semantic.min.css">
@@ -26,6 +27,7 @@
     <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.semanticui.min.js"></script>
     <script src="cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
     <script src="/resources/Semantic-UI/components/Semantic-UI-Alert.js"></script>
 
     <style>
@@ -197,6 +199,7 @@
     $(document).ready(function () {
         var table = $('#dTable').DataTable({
             select: true,
+            responsive: true,
             columns: [
                 <c:forEach items="${fields}" var="field">
                 {name: '${field.name}'},
